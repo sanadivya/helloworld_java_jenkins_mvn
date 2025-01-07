@@ -24,10 +24,10 @@ pipeline {
             cleanWs()
         }
         success {
-                 subject: "Build succeeded!"
+                echo "Build succeeded!"
         }
         failure {
-                 subject: "Build failed"
+                echo "Build failed"
         }
     }
 }
