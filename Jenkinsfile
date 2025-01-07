@@ -20,9 +20,11 @@ pipeline {
 
     post {
         always {
-            def timestamp = new Date().format("yyyyMMdd_HHmmss")
-            archiveArtifacts artifacts: "**/target/*.jar", allowEmptyArchive: true, fingerprint: true
-            archiveArtifacts artifacts: "target/helloworld-${timestamp}.jar", allowEmptyArchive: true, fingerprint: true
+            script{
+                def timestamp = new Date().format("yyyyMMdd_HHmmss")
+                archiveArtifacts artifacts: "**/target/*.jar", allowEmptyArchive: true, fingerprint: true
+                archiveArtifacts artifacts: "target/helloworld-${timestamp}.jar", allowEmptyArchive: true, fingerprint: true
+            }
             cleanWs()
         }
         success {
